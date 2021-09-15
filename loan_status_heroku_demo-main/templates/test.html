@@ -65,8 +65,8 @@
                                  <span class="progress-bar border-primary"></span>
                    </span>
                    <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            {% if session.pred %}
-                     <div class="h2 font-weight-bold">{{session.pred}}<sup class="small"></sup></div>
+                            {% if session.y_prob %}
+                     <div class="h2 font-weight-bold">{{session.y_prob}}<sup class="small">%</sup></div>
                              {%else %}
                                  <div class="h2 font-weight-bold"><sup class="small"></sup></div>
                             {% endif %}
@@ -97,17 +97,11 @@
          </div>
 
      </div>
-       {% if session.user_emi %}
-           <div class="alert alert-success" role="alert">
-               Your EMI Amount is : {{session.user_emi}}
-           </div>
-        {% else %}
-            {% if session.nag %}
-            <div class="alert alert-danger" role="alert">
+       {% if session.nag %}
+         <div class="alert alert-danger" role="alert">
                 {{session.nag}}
-            </div>
-            {% endif %}
-        {% endif %}
+         </div>
+       {% endif %}
 
       <!-- The Modal -->
       <div class="modal" id="myModal">
@@ -271,7 +265,7 @@
                       </div>
                      {% else %}
                               {{ form.applicant_income(class="form-control form-control") }}
-                    {% endif %}
+                     {% endif %}
                      <br>
                   </div>
 
@@ -319,7 +313,7 @@
                       </div>
 
                      {% else %}
-                            {{ form.loan_amount_term(class="form-control form-control") }}
+                              {{ form.loan_amount_term(class="form-control form-control") }}
                      {% endif %}
 
                      <br>
